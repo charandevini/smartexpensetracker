@@ -1,5 +1,8 @@
 package com.expensetracker.management.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -16,4 +19,8 @@ public interface UsersMapper {
 
 	@Mapping(target = "password", ignore = true)
 	UsersRequest usersEntityToRequest(Users users);
+
+	default List<UsersRequest> usersListToRequestList(List<Users> users) {
+		return users.stream().map(this::usersEntityToRequest).collect(Collectors.toList());
+	}
 }

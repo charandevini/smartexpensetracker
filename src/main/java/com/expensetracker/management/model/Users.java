@@ -13,13 +13,16 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 
 import lombok.Data;
 
 @Entity
+@TypeDef(name = "json", typeClass = JsonType.class) 
 @Table(name = "users")
 @Data
 public class Users {
