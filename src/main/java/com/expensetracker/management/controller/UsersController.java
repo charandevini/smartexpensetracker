@@ -91,4 +91,8 @@ public class UsersController {
 			return errorResponse.setExceptionResponse(e);
 		}
 	}
+	@GetMapping(value = "/test")
+	public String check() {
+		return "tested";
+	}
 }
